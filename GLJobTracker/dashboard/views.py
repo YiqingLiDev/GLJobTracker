@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+def mainList(request):
+    template = "dashboard/dashboard.html"
+    return render(request, template)
