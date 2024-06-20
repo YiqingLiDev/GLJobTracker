@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 class mainJobList(models.Model):
     STATUS = (
@@ -20,3 +21,8 @@ class mainJobList(models.Model):
     def __str__(self):
         return self.company_name + ": " + self.job_title
 
+
+class mainJobListForm(ModelForm):
+    class Meta:
+        model = mainJobList
+        fields = "__all__"

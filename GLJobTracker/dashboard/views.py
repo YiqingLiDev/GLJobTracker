@@ -6,7 +6,11 @@ def mainList(request):
 
     data = models.mainJobList.objects.all()
 
-    context = {'list': data}
+    forms = models.mainJobListForm()
+
+    context = {'list': data,
+               'form': forms,            
+    }
 
 
     return render(request, template, context)
