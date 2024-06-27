@@ -1,12 +1,14 @@
-<h1> Good Luck Job Tracker </h1>
+<h1> Good Luck Job Applications Tracker </h1>
 
-<form>
-    {{form.job_title}}
+<form method="POST", action="/">
+    {% csrf_token %}
+    {{form}}
     <input type="submit" name="mainjoblist"> 
 </form>
 
 
 {% for item in list %}
- {{item}} <br />
-
+    <div>
+        {{item.status}}, {{item.job_title}}, {{item.company_name}}, {{item.note}}
+    </div>
 {% endfor %}

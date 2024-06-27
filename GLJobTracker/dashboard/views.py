@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import models
 
 def mainList(request):
@@ -6,10 +6,17 @@ def mainList(request):
 
     data = models.mainJobList.objects.all()
 
-    forms = models.mainJobListForm()
+    form = models.mainJobListForm()
+
+    if request.method == "POST":
+        form = models.mainJobListForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/')
+
 
     context = {'list': data,
-               'form': forms,            
+               'form': form,            
     }
 
 
