@@ -9,6 +9,7 @@
 
 {% for item in list %}
     <a href="{% url 'update_list' item.id %}">Edit</a>
+    <a href="{% url 'delete_list' item.id %}">Delete</a>
     <div>
         {{item.status}}, {{item.job_title}}, {{item.company_name}}, {{item.note}} 
     </div>

@@ -38,3 +38,18 @@ def update_list(request, pk):
     context = {'form': form}
 
     return render(request, template, context)
+
+def delete_list(request, pk):
+    template = 'dashboard/delete_list.html'
+
+    data = models.mainJobList.objects.get(id = pk)
+
+    if request.method == "POST":
+        data.delete()
+        return redirect('/')
+
+    context = {'list': data}
+
+    return render(request, template, context)
+
+
