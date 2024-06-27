@@ -14,9 +14,9 @@ class mainJobList(models.Model):
     job_title = models.CharField(max_length=200, null=True)
     company_name = models.CharField(max_length=200, null=True)
     applied_date = models.DateField()
-    deadline = models.DateField()
-    url_link = models.CharField(max_length=200, null=True)
-    note = models.CharField(max_length=300, null=True)
+    # deadline = models.DateField()
+    # url_link = models.CharField(max_length=200, null=True)
+    # note = models.CharField(max_length=300, null=True)
 
     def __str__(self):
         return self.company_name + ": " + self.job_title
