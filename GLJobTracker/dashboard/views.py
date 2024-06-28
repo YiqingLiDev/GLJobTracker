@@ -4,8 +4,9 @@ from . import models
 def mainList(request):
     template = "dashboard/dashboard.html"
 
-    data = models.mainJobList.objects.all()
+    data = models.mainJobList.objects.all().order_by("-created_at")
     overall_applications = models.mainJobList.objects.count()
+    progress_applications = models.mainJobList.objects.filter(status="in progress").count()
 
     form = models.mainJobListForm()
 
@@ -18,7 +19,8 @@ def mainList(request):
 
     context = {'list': data,
                'form': form,
-               'overall_applications': overall_applications,            
+               'overall_applications': overall_applications,
+               'progress_applications':progress_applications,            
     }
 
 
