@@ -5,6 +5,7 @@ def mainList(request):
     template = "dashboard/dashboard.html"
 
     data = models.mainJobList.objects.all()
+    overall_applications = models.mainJobList.objects.count()
 
     form = models.mainJobListForm()
 
@@ -16,7 +17,8 @@ def mainList(request):
 
 
     context = {'list': data,
-               'form': form,            
+               'form': form,
+               'overall_applications': overall_applications,            
     }
 
 
