@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from . import models
+from . import filters
 
 def mainList(request):
     template = "dashboard/dashboard.html"
@@ -16,11 +17,14 @@ def mainList(request):
             form.save()
         return redirect('/')
 
+    listFilter = filters.mainJobListFilter(request.GET, queryset=data) 
+    data = listFilter.qs
 
     context = {'list': data,
                'form': form,
                'overall_applications': overall_applications,
-               'progress_applications':progress_applications,            
+               'progress_applications':progress_applications,
+               'listFilter': listFilter,           
     }
 
 
