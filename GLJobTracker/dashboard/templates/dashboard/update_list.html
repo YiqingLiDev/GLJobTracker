@@ -1,13 +1,28 @@
 {% extends 'dashboard/main.html' %}
 
 {% block content %}
-<h1> Good Luck Job Applications Tracker </h1>
-<h2> Edit Applications </h2>
+<br/>
+<br/>
 
-<form method="POST", action="">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" name="edit applications">
-</form>
+<div class="container">
+
+    <div class="card custom-card">
+        <h5 class="card-header">Edit your Job Applications</h5>
+        <div class="card-body">
+          {% comment %} <h5 class="card-title">Special title treatment</h5> {% endcomment %}
+            <form method="POST", action="">
+                {% csrf_token %}
+                {{ form }}
+                <input class="btn btn-primary" type="submit" name="edit applications">
+            </form>
+          {% comment %} <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> {% endcomment %}
+          {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
+        </div>
+    </div>
+
+
+
+</div>
+
 
 {% endblock %}
