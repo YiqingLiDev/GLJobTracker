@@ -16,6 +16,12 @@ def mainList(request):
         if form.is_valid():
             form.save()
         return redirect('/')
+    
+    # A test line to understand request.GET
+    # with request.GET["status"], I can get all query parameters from front end appended to URL
+    # print(request.GET["status"])
+    # print(request.GET.get("status", None))
+    # eg. I entered "offered" in form status, here I can get "offered" from request.GET
 
     listFilter = filters.mainJobListFilter(request.GET, queryset=data) 
     data = listFilter.qs
