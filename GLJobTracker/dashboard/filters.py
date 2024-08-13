@@ -14,6 +14,8 @@ class mainJobListFilter(django_filters.FilterSet):
     company_name = CharFilter(field_name="company_name", lookup_expr="icontains")
     job_title = CharFilter(field_name="job_title", lookup_expr="icontains")
 
+    duration_min = DateFilter(field_name="applied_date", lookup_expr="gte")
+    duration_max = DateFilter(field_name="applied_date", lookup_expr="lte")
 
     class Meta:
         model = mainJobList

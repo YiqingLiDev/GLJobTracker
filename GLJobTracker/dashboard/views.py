@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from . import models
 from . import filters
+from . import forms
 
 def mainList(request):
     template = "dashboard/dashboard.html"
@@ -9,10 +10,10 @@ def mainList(request):
     overall_applications = models.mainJobList.objects.count()
     progress_applications = models.mainJobList.objects.filter(status="in progress").count()
 
-    form = models.mainJobListForm()
+    form = forms.mainJobListForm()
 
     if request.method == "POST":
-        form = models.mainJobListForm(request.POST)
+        form = forms.mainJobListForm(request.POST)
         if form.is_valid():
             form.save()
         return redirect('/')
@@ -23,7 +24,11 @@ def mainList(request):
     # print(request.GET.get("status", None))
     # eg. I entered "offered" in form status, here I can get "offered" from request.GET
 
-    listFilter = filters.mainJobListFilter(request.GET, queryset=data) 
+
+
+
+    listFilter = filters.mainJobListFilter(request.GET, queryset=data)
+
     data = listFilter.qs
 
     context = {'list': data,
@@ -41,10 +46,10 @@ def update_list(request, pk):
     template = 'dashboard/update_list.html'
 
     data = models.mainJobList.objects.get(id = pk)
-    form = models.mainJobListForm(instance = data)
+    form = forms.mainJobListForm(instance = data)
 
     if request.method == "POST":
-        form = models.mainJobListForm(request.POST, instance = data)
+        form = forms.mainJobListForm(request.POST, instance = data)
         if form.is_valid():
             form.save()
         return redirect('/')

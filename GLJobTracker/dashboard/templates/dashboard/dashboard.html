@@ -36,8 +36,30 @@
           <div class="card custom-card">
             <div class="card-body">
               <form method="get">
-                {{listFilter.form}}
-                <button class="btn btn-primary" type="submit">Search</button>
+
+                <div class="row" style="display: flex; align-items: center;">
+                    <div class="col-xs-12 col-sm-1" style="margin-right:10px;">
+                        <p>Status</p>{{listFilter.form.status}}
+                    </div>
+
+                    <div class="col-xs-12 col-sm-2" style="margin-right:10px;">
+                        <p>min date</p>{{listFilter.form.duration_min}}
+                    </div>
+
+                    <div class="col-xs-12 col-sm-2" style="margin-right:10px;">
+                        <p>max date</p>{{listFilter.form.duration_max}}
+                    </div>
+                    <div class="col-xs-12 col-sm-2" style="margin-right:10px;">
+                        <p>Company Name</p>{{listFilter.form.company_name}}
+                    </div>
+                    <div class="col-xs-12 col-sm-2" style="margin-right:10px;">
+                        <p>Job Title</p>{{listFilter.form.job_title}}
+                    </div>
+                    <div class="col-xs-12 col-sm-3" style="margin-right:0px;">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </div>
+                
               </form>
             </div>
           </div>
